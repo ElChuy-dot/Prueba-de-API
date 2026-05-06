@@ -1,10 +1,11 @@
+import os
 import obd
 import time
 import requests
 from datetime import datetime, timezone
 
-API_URL = "http://127.0.0.1:8000/obd/snapshot"
-PORT = "COM9"  # Cambia a /dev/ttyUSB0 en Linux/Mac
+API_URL = os.getenv("OBD_API_URL", "http://127.0.0.1:8000/obd/snapshot")
+PORT = os.getenv("OBD_PORT", "/dev/ttyUSB0")
 
 connection = obd.OBD(portstr=PORT)
 
